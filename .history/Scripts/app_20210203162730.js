@@ -95,11 +95,10 @@
 
         // form validation
 
-        $("#fullName").on("blur", function(){
-          
-          if($(this).val().length < 2)
+        $("#fullName").on("blur", ()=>{
+          if($("#fullName").val().length < 2)
           {
-              $(this).trigger("focus").trigger("select");
+              $("#fullName").trigger("focus").trigger("select");
               $("#messageArea").show().text("Please enter an appropriate name!").addClass("alert alert-danger");
           }
           else
@@ -161,7 +160,7 @@
         </tr>`;
         }
 
-        $("#contactList").html(data);
+        contactList.innerHTML = data;
       }
     }
 

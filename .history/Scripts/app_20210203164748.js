@@ -99,7 +99,7 @@
           
           if($(this).val().length < 2)
           {
-              $(this).trigger("focus").trigger("select");
+              $("#fullName").trigger("focus").trigger("select");
               $("#messageArea").show().text("Please enter an appropriate name!").addClass("alert alert-danger");
           }
           else
