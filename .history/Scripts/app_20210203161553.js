@@ -101,8 +101,8 @@
           
           if($("#fullName").val().length < 2)
           {
-              $("#fullName").trigger("focus");
-              $("#fullName").trigger("select");
+              $("#fullName").focus();
+              $("#fullName").select();
 
               $("#messageArea").show();
               $("#messageArea").addClass("alert alert-danger");
@@ -114,18 +114,35 @@
             $("#messageArea").hide();
           }
         })
-
-        $("#sendButton").on("click", ()=> {
-          let contact = new core.Contact(fullName.value, contactNumber.value, emailAddress.value);
+        /* let fullName = document.getElementById("fullName");
+        fullName.addEventListener("blur", function() {
+            if(fullName.value.length < 2)
+            {
+                fullName.focus();
+                fullName.select();
+                messageArea.hidden = false;
+                messageArea.className = "alert alert-danger";
+                messageArea.textContent = "Please enter an appropriate Name";
+            }
+            else
+            {
+                messageArea.removeAttribute("class");
+                messageArea.hidden = true;
+            }
+        });
+ */
+        let sendButton = document.getElementById("sendButton");
+        sendButton.addEventListener("click", function(event){
+            //event.preventDefault();
+            
+            let contact = new core.Contact(fullName.value, contactNumber.value, emailAddress.value);
 
             if(contact.serialize())
             {
               localStorage.setItem((localStorage.length + 1).toString(), contact.serialize());
             }
-
-        })
-
-            //event.preventDefault();
+           
+        });
 
         let userData = "Diana Prince,4165555552,wonderwoman@example.com";
          
